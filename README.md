@@ -9,6 +9,13 @@ Tested on Python 3.10, cuda 12.0, using conda.
 </div>
 
 ## Installation
+### Just use the Dockerfile!
+```
+docker build -t garfield .
+docker run -d --gpus all -v /home/smnair/work/nerf/garfield:/workspace/garfield -v /pub2/nerf/nerfstudio/data:/workspace/data -p 7007:7007 --rm -it --shm-size=12gb garfield
+ns-train garfield --data /workspace/data/nerfstudio/kitchen --output-dir output
+```
+
 1. Install nerfstudio from source, and its dependencies. This project requires the latest version of nerfstudio
 (more specifically, the new viewer based on viser).
 ```
